@@ -3,14 +3,20 @@ import React, { useRef } from 'react'
 export const Search = ({setCity}) => {
     const inputCityRef = useRef(null);
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            setCity(inputCityRef.current.value);
+        }
+    }
     const handleSearch = () => {
         setCity(inputCityRef.current.value);
         console.log(inputCityRef.current.value);
+      
     }
 
   return (
     <div className='search'>
-        <input type="text" className='search-bar' placeholder='Ciudad a Buscar' ref={inputCityRef}/>
+        <input type="text" className='search-bar' placeholder='Ciudad a Buscar' ref={inputCityRef} onKeyDown={handleKeyDown}/>
         <button className="search-btn" onClick={handleSearch}>
                 <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1.5em"
                     width="1em" xmlns="http://www.w3.org/2000/svg">
