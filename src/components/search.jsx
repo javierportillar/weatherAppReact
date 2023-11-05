@@ -1,6 +1,12 @@
 import React, { useRef } from 'react'
 
 export const Search = ({setCity}) => {
+    const inputCityRef = useRef(null);
+
+    const handleSearch = () => {
+        setCity(inputCityRef.current.value);
+        console.log(inputCityRef.current.value);
+    }
 
   return (
     <div className='search'>
